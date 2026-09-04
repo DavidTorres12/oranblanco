@@ -1,0 +1,280 @@
+.faq {
+  position: relative;
+  background:
+    radial-gradient(
+      ellipse 75% 50% at 50% 45%,
+      rgba(10, 32, 54, 0.42) 0%,
+      rgba(3, 12, 22, 0.18) 42%,
+      transparent 70%
+    ),
+    radial-gradient(circle at 18% 30%, rgba(40, 199, 229, 0.08) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 84% 20%, rgba(247, 249, 252, 0.05) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 75% 78%, rgba(40, 199, 229, 0.07) 0 1px, transparent 1.5px),
+    #000000;
+  color: var(--color-ivory);
+  padding: clamp(5.5rem, 12vh, 9.5rem) 0;
+  overflow: hidden;
+}
+
+.faq__inner {
+  width: min(100% - 2 * var(--container-gutter), 114rem);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 6vh, 5rem);
+}
+
+/* Columna Izquierda */
+.faq__sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.faq__eyebrow {
+  color: var(--color-cyan);
+  font-size: clamp(0.72rem, 0.25vw + 0.65rem, 0.88rem);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin: 0 0 clamp(1rem, 2vh, 1.5rem);
+}
+
+.faq__title {
+  color: var(--color-ivory);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(2.35rem, 3.6vw + 0.5rem, 4.2rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.faq__title-highlight {
+  color: var(--color-cyan);
+}
+
+.faq__description {
+  margin: clamp(1.25rem, 2.5vh, 2rem) 0 0;
+  color: rgba(139, 153, 170, 0.85);
+  font-size: clamp(0.95rem, 0.2vw + 0.85rem, 1.1rem);
+  font-weight: 400;
+  line-height: 1.55;
+  max-width: 38ch;
+}
+
+/* Botón de WhatsApp */
+.faq__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: clamp(2rem, 4vh, 3rem);
+  padding: clamp(0.85rem, 1.6vh, 1.1rem) clamp(1.5rem, 2.2vw, 2.25rem);
+  border-radius: 9999px;
+  background: var(--color-ivory);
+  color: #000000;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(0.92rem, 0.2vw + 0.85rem, 1.05rem);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 280ms ease,
+    color 280ms ease,
+    transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 280ms ease;
+}
+
+.faq__btn-arrow {
+  color: var(--color-cyan);
+  font-size: 1.15em;
+  line-height: 1;
+  transition:
+    transform 240ms ease,
+    color 240ms ease;
+}
+
+.faq__btn:hover {
+  background: var(--color-cyan);
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(40, 199, 229, 0.35);
+}
+
+.faq__btn:hover .faq__btn-arrow {
+  color: #000000;
+  transform: translate(2px, -2px);
+}
+
+.faq__btn:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 4px;
+}
+
+/* Columna Derecha: Acordeón */
+.faq__accordion {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.faq__item {
+  border-bottom: 1px solid rgba(245, 244, 239, 0.12);
+  padding: clamp(1.25rem, 2.4vh, 1.85rem) 0;
+  transition: border-color 260ms ease;
+}
+
+.faq__item:first-child {
+  border-top: 1px solid rgba(245, 244, 239, 0.12);
+}
+
+.faq__item:hover {
+  border-color: rgba(245, 244, 239, 0.22);
+}
+
+.faq__trigger {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  min-height: 44px;
+}
+
+.faq__trigger:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.faq__number {
+  color: var(--color-cyan);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(0.95rem, 0.25vw + 0.85rem, 1.12rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.faq__question {
+  color: var(--color-ivory);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(1.05rem, 0.5vw + 0.85rem, 1.35rem);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  transition: color 240ms ease;
+}
+
+.faq__item--open .faq__question,
+.faq__trigger:hover .faq__question {
+  color: #ffffff;
+}
+
+/* Símbolo + que rota/transforma a − */
+.faq__toggle {
+  position: relative;
+  width: 1.15rem;
+  height: 1.15rem;
+  color: var(--color-cyan);
+  display: inline-block;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+.faq__toggle-h,
+.faq__toggle-v {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: currentColor;
+  border-radius: 1px;
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 240ms ease;
+}
+
+.faq__toggle-h {
+  width: 1rem;
+  height: 2px;
+  transform: translate(-50%, -50%);
+}
+
+.faq__toggle-v {
+  width: 2px;
+  height: 1rem;
+  transform: translate(-50%, -50%);
+}
+
+.faq__item--open .faq__toggle-v {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+
+/* Transición suave de colapso y despliegue */
+.faq__answer-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.faq__item--open .faq__answer-wrapper {
+  grid-template-rows: 1fr;
+}
+
+.faq__answer-inner {
+  overflow: hidden;
+}
+
+.faq__answer {
+  margin: clamp(0.75rem, 1.5vh, 1.15rem) 0 0.25rem;
+  padding-left: clamp(2.35rem, 3.6vw, 3.1rem);
+  color: rgba(139, 153, 170, 0.88);
+  font-size: clamp(0.95rem, 0.25vw + 0.85rem, 1.1rem);
+  font-weight: 400;
+  line-height: 1.62;
+  max-width: 52ch;
+  opacity: 0;
+  transform: translateY(-0.35rem);
+  transition:
+    opacity 260ms 80ms ease,
+    transform 260ms 80ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.faq__item--open .faq__answer {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Distribución en escritorio: 42% y 58% */
+@media (min-width: 60rem) {
+  .faq__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+    gap: clamp(3rem, 6vw, 7rem);
+    align-items: start;
+  }
+
+  .faq__sidebar {
+    position: sticky;
+    top: clamp(2rem, 5vh, 4rem);
+  }
+}
+
+/* Accesibilidad: Reducción de movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .faq__btn,
+  .faq__btn-arrow,
+  .faq__toggle-v,
+  .faq__answer-wrapper,
+  .faq__answer {
+    transition: none !important;
+    transform: none !important;
+  }
+}

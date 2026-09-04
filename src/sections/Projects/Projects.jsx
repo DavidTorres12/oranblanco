@@ -69,10 +69,13 @@ function Projects() {
     >
       <div className="projects__inner">
         <header className="projects__header">
-          <p className="projects__eyebrow">Selección de trabajos</p>
+
           <h2 id="projects-title" className="projects__title">
-            Proyectos destacados<span>.</span>
+            PROYECTOS DESTACADOS<span>.</span>
           </h2>
+          <p className="projects__subtitle">
+            Una selección de trabajos premium — webs de alta conversión pensadas para marcas que quieren verse como la autoridad que son.
+          </p>
         </header>
 
         <div className="projects__desktop-grid">

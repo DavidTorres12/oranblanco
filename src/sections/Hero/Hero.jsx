@@ -19,7 +19,6 @@ function Hero() {
   const heroRef = useRef(null)
   const visualRef = useRef(null)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [headerScrolled, setHeaderScrolled] = useState(false)
   const [videoAvailable, setVideoAvailable] = useState(true)
   const [reduceMotion, setReduceMotion] = useState(() =>
     typeof window === 'undefined'
@@ -33,14 +32,6 @@ function Hero() {
 
     query.addEventListener('change', updatePreference)
     return () => query.removeEventListener('change', updatePreference)
-  }, [])
-
-  useEffect(() => {
-    const updateHeader = () => setHeaderScrolled(window.scrollY > 16)
-
-    updateHeader()
-    window.addEventListener('scroll', updateHeader, { passive: true })
-    return () => window.removeEventListener('scroll', updateHeader)
   }, [])
 
   useEffect(() => {
@@ -114,7 +105,7 @@ function Hero() {
       aria-labelledby="hero-title"
     >
       <header
-        className={`hero__header${headerScrolled ? ' hero__header--scrolled' : ''}${menuOpen ? ' hero__header--menu-open' : ''}`}
+        className={`hero__header${menuOpen ? ' hero__header--menu-open' : ''}`}
       >
         <a className="hero__brand" href="#top" aria-label="Orán Soluciones, inicio">
           <svg
@@ -141,6 +132,7 @@ function Hero() {
 
         <div className="hero__actions">
           <a className="hero__contact" href="#contacto">
+
             Hablemos <span aria-hidden="true">↗</span>
           </a>
 
@@ -231,11 +223,6 @@ function Hero() {
 
         <ProjectCta placement="mobile" />
       </div>
-
-      <a className="hero__scroll-cue" href="#proyectos">
-        <span>Explorá</span>
-        <span className="hero__scroll-line" aria-hidden="true" />
-      </a>
     </section>
   )
 }

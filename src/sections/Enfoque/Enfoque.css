@@ -10,31 +10,34 @@
     clamp(6rem, 18vw, 10rem)
     max(1.25rem, env(safe-area-inset-left));
   background:
-    linear-gradient(180deg, transparent 68%, rgba(0, 0, 0, 0.42) 84%, #000000 100%),
-    radial-gradient(ellipse at 50% 62%, rgba(9, 35, 55, 0.58) 0%, rgba(4, 16, 28, 0.24) 34%, transparent 64%),
-    radial-gradient(circle at 12% 24%, rgba(40, 199, 229, 0.14) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 82% 18%, rgba(247, 249, 252, 0.09) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 72% 74%, rgba(40, 199, 229, 0.1) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 26% 82%, rgba(247, 249, 252, 0.07) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 91% 52%, rgba(40, 199, 229, 0.08) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 38% 16%, rgba(247, 249, 252, 0.06) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 50% 48%, rgba(7, 17, 31, 0.56), transparent 56%),
-    #02070e;
+    /* Resplandor radial cian sumamente tenue centrado detrás del texto */
+    radial-gradient(
+      ellipse 70% 55% at 50% 50%,
+      rgba(40, 199, 229, 0.035) 0%,
+      rgba(5, 20, 36, 0.22) 45%,
+      transparent 72%
+    ),
+    /* Partículas estelares con opacidad muy calibrada */
+    radial-gradient(circle at 14% 30%, rgba(40, 199, 229, 0.09) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 82% 24%, rgba(247, 249, 252, 0.06) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 70% 70%, rgba(40, 199, 229, 0.08) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 26% 76%, rgba(247, 249, 252, 0.05) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 88% 48%, rgba(40, 199, 229, 0.07) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 36% 22%, rgba(247, 249, 252, 0.05) 0 1px, transparent 1.5px),
+    /* Degradado vertical continuo: Negro puro en 0% -> Azul tinta en 30%-70% -> Negro puro en 100% */
+    linear-gradient(
+      180deg,
+      #000000 0%,
+      #000000 14%,
+      #020914 28%,
+      #051425 45%,
+      #051425 55%,
+      #020914 72%,
+      #000000 86%,
+      #000000 100%
+    );
   color: var(--color-ivory);
   place-items: center;
-}
-
-.enfoque::before {
-  position: absolute;
-  right: max(1.25rem, env(safe-area-inset-right));
-  left: max(1.25rem, env(safe-area-inset-left));
-  height: 1px;
-  background: rgba(245, 244, 239, 0.07);
-  content: '';
-}
-
-.enfoque::before {
-  top: 0;
 }
 
 .enfoque__inner {
@@ -47,14 +50,19 @@
 .enfoque__inner::before {
   position: absolute;
   z-index: -1;
-  top: 34%;
-  right: 4%;
-  bottom: -18%;
-  left: 4%;
+  top: 25%;
+  right: 8%;
+  bottom: -15%;
+  left: 8%;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(10, 39, 61, 0.34), transparent 68%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(40, 199, 229, 0.038) 0%,
+    rgba(3, 18, 32, 0.15) 50%,
+    transparent 70%
+  );
   content: '';
-  filter: blur(1.5rem);
+  filter: blur(2.5rem);
   pointer-events: none;
 }
 
@@ -183,11 +191,6 @@
     min-height: 100svh;
     padding-right: 3rem;
     padding-left: 3rem;
-  }
-
-  .enfoque::before {
-    right: 3rem;
-    left: 3rem;
   }
 }
 
