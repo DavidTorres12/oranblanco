@@ -10,33 +10,28 @@
     clamp(6rem, 18vw, 10rem)
     max(1.25rem, env(safe-area-inset-left));
   background:
-    /* Resplandor radial cian sumamente tenue centrado detrás del texto */
     radial-gradient(
       ellipse 70% 55% at 50% 50%,
-      rgba(40, 199, 229, 0.035) 0%,
-      rgba(5, 20, 36, 0.22) 45%,
+      rgba(2, 132, 199, 0.05) 0%,
+      rgba(224, 242, 254, 0.4) 45%,
       transparent 72%
     ),
-    /* Partículas estelares con opacidad muy calibrada */
-    radial-gradient(circle at 14% 30%, rgba(40, 199, 229, 0.09) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 82% 24%, rgba(247, 249, 252, 0.06) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 70% 70%, rgba(40, 199, 229, 0.08) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 26% 76%, rgba(247, 249, 252, 0.05) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 88% 48%, rgba(40, 199, 229, 0.07) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 36% 22%, rgba(247, 249, 252, 0.05) 0 1px, transparent 1.5px),
-    /* Degradado vertical continuo: Negro puro en 0% -> Azul tinta en 30%-70% -> Negro puro en 100% */
+    radial-gradient(circle at 14% 30%, rgba(2, 132, 199, 0.06) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 82% 24%, rgba(15, 23, 42, 0.04) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 70% 70%, rgba(2, 132, 199, 0.06) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 26% 76%, rgba(15, 23, 42, 0.04) 0 1px, transparent 1.5px),
     linear-gradient(
       180deg,
-      #000000 0%,
-      #000000 14%,
-      #020914 28%,
-      #051425 45%,
-      #051425 55%,
-      #020914 72%,
-      #000000 86%,
-      #000000 100%
+      var(--color-bg-main) 0%,
+      var(--color-bg-main) 14%,
+      #f0f9ff 28%,
+      #e0f2fe 45%,
+      #e0f2fe 55%,
+      #f0f9ff 72%,
+      var(--color-bg-main) 86%,
+      var(--color-bg-main) 100%
     );
-  color: var(--color-ivory);
+  color: var(--color-ink-primary);
   place-items: center;
 }
 
@@ -57,8 +52,8 @@
   border-radius: 50%;
   background: radial-gradient(
     ellipse at center,
-    rgba(40, 199, 229, 0.038) 0%,
-    rgba(3, 18, 32, 0.15) 50%,
+    rgba(2, 132, 199, 0.06) 0%,
+    rgba(224, 242, 254, 0.3) 50%,
     transparent 70%
   );
   content: '';
@@ -95,7 +90,7 @@
 .enfoque__eyebrow::after {
   width: clamp(1.5rem, 8vw, 3rem);
   height: 1px;
-  background: rgba(40, 199, 229, 0.42);
+  background: rgba(2, 132, 199, 0.42);
   content: '';
   transform: scaleX(0);
   transition: transform 900ms 60ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -112,7 +107,7 @@
 .enfoque__statement {
   max-width: 46ch;
   margin: clamp(1.7rem, 5vw, 2.7rem) auto 0;
-  color: rgba(139, 153, 170, 0.64);
+  color: var(--color-ink-secondary);
   font-size: clamp(1rem, 2.2vw, 2.5rem);
   font-weight: 400;
   line-height: 1.45;
@@ -122,7 +117,7 @@
 .enfoque__question {
   max-width: 28ch;
   margin: clamp(1.7rem, 4vw, 2.8rem) auto 0;
-  color: var(--color-ivory);
+  color: var(--color-ink-primary);
   font-size: clamp(2.1rem, 4vw, 4.2rem);
   font-weight: 500;
   line-height: 0.97;
@@ -144,10 +139,10 @@
 }
 
 .enfoque__highlight {
-  color: var(--color-ivory);
+  color: var(--color-ink-primary);
   text-shadow:
-    0 0 1.4rem rgba(40, 199, 229, 0.18),
-    0 0 2.8rem rgba(40, 199, 229, 0.08);
+    0 0 1.4rem rgba(2, 132, 199, 0.22),
+    0 0 2.8rem rgba(2, 132, 199, 0.1);
 }
 
 .enfoque__accent {

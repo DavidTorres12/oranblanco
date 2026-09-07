@@ -10,8 +10,8 @@
   padding-right: max(var(--container-gutter), env(safe-area-inset-right));
   padding-bottom: max(clamp(1.75rem, 4svh, 2.5rem), calc(env(safe-area-inset-bottom) + 1.25rem));
   padding-left: max(var(--container-gutter), env(safe-area-inset-left));
-  background: #000000;
-  color: var(--color-ivory);
+  background: #ffffff;
+  color: var(--color-ink-primary);
 }
 
 .hero__header {
@@ -49,7 +49,7 @@
 }
 
 .hero__brand-name {
-  color: #ffffff;
+  color: var(--color-ink-primary);
   font-size: clamp(0.7rem, 3vw, 0.84rem);
   font-weight: 600;
   line-height: 1;
@@ -91,7 +91,7 @@
   display: block;
   width: 1.25rem;
   height: 1px;
-  background: var(--color-ivory);
+  background: var(--color-ink-primary);
   transition: transform 180ms ease;
 }
 
@@ -104,8 +104,8 @@
 }
 
 .hero__menu-toggle[aria-expanded='true'] {
-  border-color: rgba(245, 244, 239, 0.24);
-  background: rgba(245, 244, 239, 0.05);
+  border-color: var(--color-border-strong);
+  background: rgba(15, 23, 42, 0.05);
 }
 
 .hero__header--menu-open {
@@ -127,7 +127,9 @@
     max(1.5rem, env(safe-area-inset-right))
     max(1.5rem, calc(env(safe-area-inset-bottom) + 1rem))
     max(1.5rem, env(safe-area-inset-left));
-  background: #000000;
+  background: rgba(248, 250, 252, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   animation: hero-menu-enter 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -140,8 +142,8 @@
   display: grid;
   align-items: baseline;
   padding: clamp(0.8rem, 2.4vh, 1.35rem) 0;
-  border-bottom: 1px solid rgba(245, 244, 239, 0.1);
-  color: var(--color-ivory);
+  border-bottom: 1px solid var(--color-border-subtle);
+  color: var(--color-ink-primary);
   font-size: clamp(2.25rem, 11vw, 4rem);
   font-weight: 500;
   line-height: 1;
@@ -178,11 +180,11 @@
   margin-top: 2rem;
   padding: 1rem 1.1rem;
   border-radius: 0.8rem;
-  background: var(--color-ivory);
-  color: #000000;
+  background: var(--color-ink-primary);
+  color: #ffffff;
   font-size: 0.95rem;
   font-weight: 600;
-  transition: transform 160ms ease;
+  transition: transform 160ms ease, background-color 160ms ease;
   animation: hero-menu-link-enter 560ms 330ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
@@ -203,7 +205,7 @@
 }
 
 .hero__title {
-  color: var(--color-ivory);
+  color: var(--color-ink-primary);
   font-size: clamp(2.45rem, 11vw, 4.25rem);
   font-weight: 500;
   line-height: 0.93;
@@ -217,18 +219,18 @@
   padding-bottom: 0.09em;
   background-image: linear-gradient(
     105deg,
-    var(--color-ivory) 0%,
-    var(--color-ivory) 42%,
-    #f9f9f6 48%,
-    #edf9fb 51%,
-    #f9f9f6 54%,
-    var(--color-ivory) 60%,
-    var(--color-ivory) 100%
+    #0f172a 0%,
+    #0f172a 42%,
+    #0284c7 48%,
+    #0ea5e9 51%,
+    #0284c7 54%,
+    #0f172a 60%,
+    #0f172a 100%
   );
   background-position: 120% 50%;
   background-size: 240% 100%;
   background-clip: text;
-  color: var(--color-ivory);
+  color: var(--color-ink-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: hero-title-reflection 17s ease-in-out infinite;
@@ -241,7 +243,7 @@
 
 .hero__services {
   margin-top: clamp(1rem, 2.2vh, 1.35rem);
-  color: var(--color-slate);
+  color: var(--color-ink-secondary);
   font-size: clamp(0.85rem, 3.8vw, 1.05rem);
   font-weight: 400;
   line-height: 1.45;
@@ -254,7 +256,7 @@
   display: inline-flex;
   align-items: center;
   margin-top: 1.75rem;
-  color: var(--color-ivory);
+  color: var(--color-ink-primary);
   font-size: 1rem;
   font-weight: 500;
   gap: 0.5rem;
@@ -270,8 +272,8 @@
   height: 1px;
   background: linear-gradient(
     90deg,
-    rgba(40, 199, 229, 0.16),
-    rgba(40, 199, 229, 0.92)
+    rgba(2, 132, 199, 0.16),
+    rgba(2, 132, 199, 0.92)
   );
   content: '';
   opacity: 0.5;
@@ -315,32 +317,18 @@
   animation-delay: 480ms;
 }
 
+
 .hero__visual {
   --hero-media-x: 0px;
   --hero-media-y: 0px;
   position: relative;
   width: 100%;
-  max-width: min(100%, 28rem);
-  height: clamp(13rem, 32svh, 20rem);
+  max-width: min(100%, 38rem);
+  height: clamp(18rem, 46svh, 30rem);
   margin-inline: auto;
-  overflow: hidden;
-  border-radius: clamp(1rem, 2.5vw, 1.5rem);
-  background: #000000;
   transform: translate3d(var(--hero-media-x), var(--hero-media-y), 0);
   transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
   animation: hero-visual-enter 980ms 300ms ease backwards;
-}
-
-.hero__visual::after {
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  background:
-    linear-gradient(90deg, #000 0%, transparent 12%, transparent 88%, #000 100%),
-    linear-gradient(180deg, #000 0%, transparent 13%, transparent 87%, #000 100%);
-  content: '';
-  opacity: 0.5;
-  pointer-events: none;
 }
 
 .hero__poster,
@@ -349,7 +337,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
 
@@ -457,20 +445,22 @@
     align-items: center;
     padding: clamp(0.75rem, 0.5vw + 0.45rem, 0.95rem) clamp(1.25rem, 0.9vw + 0.75rem, 1.75rem);
     border-radius: 999px;
-    background: var(--color-ivory);
-    color: #000000;
+    background: var(--color-ink-primary);
+    color: #ffffff;
     font-size: clamp(0.82rem, 0.4vw + 0.6rem, 0.96rem);
     font-weight: 600;
     gap: 0.55rem;
     transition:
       background-color 180ms ease,
       transform 180ms ease,
-      opacity 180ms ease;
+      opacity 180ms ease,
+      box-shadow 180ms ease;
   }
 
   .hero__contact:hover,
   .hero__contact:focus-visible {
-    background: var(--color-white);
+    background: #000000;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.18);
     transform: translateY(-1px);
   }
 
@@ -564,13 +554,8 @@
   }
 
   .hero__visual {
-    height: clamp(22rem, min(64svh, 44vw), 52rem);
+    height: clamp(26rem, min(75svh, 52vw), 58rem);
     max-width: 100%;
-    border-radius: clamp(1.25rem, 2vw, 2.25rem);
-  }
-
-  .hero__visual::after {
-    opacity: 0.42;
   }
 
 }
@@ -602,7 +587,7 @@
 @media (prefers-reduced-motion: reduce) {
   .hero__title > span {
     background: none;
-    color: var(--color-ivory);
+    color: var(--color-ink-primary);
     -webkit-text-fill-color: currentColor;
     animation: none;
   }

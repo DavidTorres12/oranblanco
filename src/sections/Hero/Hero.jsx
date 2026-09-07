@@ -199,7 +199,7 @@ function Hero() {
         <div ref={visualRef} className="hero__visual" aria-hidden="true">
           <img
             className="hero__poster"
-            src="/media/hero/isotipo-3d-poster.png"
+            src="/galeria/fondohero.webp"
             alt=""
           />
 
@@ -211,12 +211,12 @@ function Hero() {
               loop
               playsInline
               preload="metadata"
-              poster="/media/hero/isotipo-3d-poster.png"
+              poster="/galeria/fondohero.webp"
               aria-hidden="true"
               tabIndex={-1}
               onError={() => setVideoAvailable(false)}
             >
-              <source src="/media/hero/isotipo-3d-loop.webm" type="video/webm" />
+              <source src="/galeria/fondohero.mp4" type="video/mp4" />
             </video>
           )}
         </div>

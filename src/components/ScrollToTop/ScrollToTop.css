@@ -8,15 +8,15 @@
   width: clamp(2.75rem, 6vw, 3.15rem);
   height: clamp(2.75rem, 6vw, 3.15rem);
   padding: 0;
-  border: 1px solid rgba(40, 199, 229, 0.28);
+  border: 1px solid rgba(2, 132, 199, 0.28);
   border-radius: 50%;
-  background: rgba(8, 12, 18, 0.78);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.5),
-    0 0 14px rgba(40, 199, 229, 0.12);
-  color: var(--color-ivory);
+    0 8px 24px rgba(15, 23, 42, 0.12),
+    0 0 14px rgba(2, 132, 199, 0.12);
+  color: var(--color-ink-primary);
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
@@ -36,11 +36,11 @@
 }
 
 .scroll-to-top:hover {
-  border-color: rgba(40, 199, 229, 0.7);
-  background: rgba(12, 20, 30, 0.9);
+  border-color: var(--color-cyan);
+  background: #ffffff;
   box-shadow:
-    0 8px 30px rgba(0, 0, 0, 0.6),
-    0 0 22px rgba(40, 199, 229, 0.32);
+    0 8px 30px rgba(15, 23, 42, 0.18),
+    0 0 22px rgba(2, 132, 199, 0.25);
 }
 
 .scroll-to-top:active {
@@ -55,7 +55,7 @@
 .scroll-to-top__icon {
   width: clamp(1.15rem, 2.5vw, 1.3rem);
   height: clamp(1.15rem, 2.5vw, 1.3rem);
-  color: var(--color-ivory);
+  color: var(--color-ink-primary);
   transition:
     transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
     color 220ms ease;
@@ -71,11 +71,13 @@
   position: absolute;
   right: calc(100% + 0.65rem);
   padding: 0.25rem 0.6rem;
-  border: 1px solid rgba(40, 199, 229, 0.22);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 0.35rem;
-  background: rgba(8, 12, 18, 0.88);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  color: var(--color-ivory);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  color: var(--color-ink-primary);
   font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 0.08em;

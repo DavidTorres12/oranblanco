@@ -1,7 +1,7 @@
 .nosotros {
   position: relative;
-  background: #000000;
-  color: var(--color-ivory);
+  background: var(--color-bg-main);
+  color: var(--color-ink-primary);
   padding: clamp(5.5rem, 12vh, 9.5rem) 0;
   overflow: hidden;
   display: flex;
@@ -18,7 +18,7 @@
   width: clamp(28rem, 45vw, 42rem);
   height: clamp(28rem, 45vw, 42rem);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(40, 199, 229, 0.048) 0%, transparent 68%);
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.05) 0%, transparent 68%);
   pointer-events: none;
   filter: blur(35px);
   z-index: 0;
@@ -81,16 +81,16 @@
 
 /* 4. Micro-interacción al pasar el cursor (Hover con vida) */
 .nosotros__title--left {
-  color: rgba(245, 244, 239, 0.44);
+  color: var(--color-ink-muted);
   transition: color 350ms ease;
 }
 
 .nosotros__column--left:hover .nosotros__title--left {
-  color: rgba(245, 244, 239, 0.85);
+  color: var(--color-ink-primary);
 }
 
 .nosotros__title--right {
-  color: var(--color-ivory);
+  color: var(--color-ink-primary);
 }
 
 .nosotros__dot {
@@ -104,12 +104,12 @@
 }
 
 .nosotros__column--right:hover .nosotros__highlight {
-  text-shadow: 0 0 28px rgba(40, 199, 229, 0.38);
+  text-shadow: 0 0 28px rgba(2, 132, 199, 0.32);
 }
 
 .nosotros__text {
   margin: clamp(1.25rem, 2.5vh, 2rem) 0 0;
-  color: rgba(139, 153, 170, 0.86);
+  color: var(--color-ink-secondary);
   font-size: clamp(0.95rem, 0.25vw + 0.85rem, 1.15rem);
   font-weight: 400;
   line-height: 1.55;
@@ -124,8 +124,8 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(40, 199, 229, 0.5) 20%,
-    rgba(40, 199, 229, 0.5) 80%,
+    rgba(2, 132, 199, 0.4) 20%,
+    rgba(2, 132, 199, 0.4) 80%,
     transparent
   );
   display: flex;
@@ -139,7 +139,7 @@
   height: 6px;
   border-radius: 50%;
   background: var(--color-cyan);
-  box-shadow: 0 0 10px rgba(40, 199, 229, 0.8), 0 0 20px rgba(40, 199, 229, 0.4);
+  box-shadow: 0 0 10px rgba(2, 132, 199, 0.7), 0 0 18px rgba(2, 132, 199, 0.35);
   animation: nosotros-pulse 3s ease-in-out infinite;
 }
 
@@ -147,12 +147,12 @@
   0%, 100% {
     transform: scale(0.85);
     opacity: 0.7;
-    box-shadow: 0 0 8px rgba(40, 199, 229, 0.6);
+    box-shadow: 0 0 8px rgba(2, 132, 199, 0.5);
   }
   50% {
     transform: scale(1.3);
     opacity: 1;
-    box-shadow: 0 0 16px rgba(40, 199, 229, 1), 0 0 26px rgba(40, 199, 229, 0.5);
+    box-shadow: 0 0 16px rgba(2, 132, 199, 0.9), 0 0 24px rgba(2, 132, 199, 0.4);
   }
 }
 
@@ -174,7 +174,7 @@
 
 .nosotros__principle {
   margin: 0;
-  color: rgba(245, 244, 239, 0.68);
+  color: var(--color-ink-secondary);
   font-size: clamp(0.85rem, 0.25vw + 0.75rem, 1rem);
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -239,8 +239,8 @@
     background: linear-gradient(
       180deg,
       transparent,
-      rgba(40, 199, 229, 0.55) 20%,
-      rgba(40, 199, 229, 0.55) 80%,
+      rgba(2, 132, 199, 0.45) 20%,
+      rgba(2, 132, 199, 0.45) 80%,
       transparent
     );
     align-self: stretch;
