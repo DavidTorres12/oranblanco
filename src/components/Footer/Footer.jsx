@@ -6,7 +6,7 @@ function Footer() {
   const whatsappUrl = getWhatsAppUrl()
 
   return (
-    <footer className="footer" role="contentinfo">
+    <footer id="contacto" className="footer" role="contentinfo">
       <div className="footer__inner">
         {/* Marca principal con isotipo */}
         <div className="footer__brand-wrap">
@@ -48,12 +48,13 @@ function Footer() {
             <a className="footer__link" href="#testimonios">Testimonios</a>
             <a className="footer__link" href="#nosotros">Nosotros</a>
             <a className="footer__link" href="#proyectos">Proyectos</a>
+            <a className="footer__link" href="#enfoque">Enfoque</a>
             <a className="footer__link" href="#faq">Preguntas</a>
           </nav>
 
           <div className="footer__socials" aria-label="Redes sociales">
             <a
-              className="footer__social-btn"
+              className="footer__social-btn footer__social-btn--whatsapp"
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -73,7 +74,7 @@ function Footer() {
             </a>
 
             <a
-              className="footer__social-btn"
+              className="footer__social-btn footer__social-btn--instagram"
               href={CONTACT_INFO.instagram || 'https://instagram.com/oransoluciones'}
               target="_blank"
               rel="noopener noreferrer"
@@ -93,7 +94,7 @@ function Footer() {
             </a>
 
             <a
-              className="footer__social-btn"
+              className="footer__social-btn footer__social-btn--facebook"
               href={CONTACT_INFO.facebook || 'https://facebook.com/oransoluciones'}
               target="_blank"
               rel="noopener noreferrer"
@@ -114,7 +115,7 @@ function Footer() {
 
             {CONTACT_INFO.linkedin && (
               <a
-                className="footer__social-btn"
+                className="footer__social-btn footer__social-btn--linkedin"
                 href={CONTACT_INFO.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"

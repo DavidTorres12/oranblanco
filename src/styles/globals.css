@@ -31,6 +31,12 @@
   --space-2xl: clamp(3rem, 5vw, 5rem);
   --space-3xl: clamp(4rem, 7vw, 7.5rem);
 
+  /* Sistema Unificado de Ritmo Vertical */
+  --section-padding-y: clamp(4.5rem, 8vh, 7.5rem);
+  --space-eyebrow-to-title: clamp(0.65rem, 1.2vh, 0.95rem);
+  --space-title-to-text: clamp(1rem, 2vh, 1.5rem);
+  --space-header-to-content: clamp(2.5rem, 5vh, 3.75rem);
+
   font-family: 'Instrument Sans', sans-serif;
   color: var(--color-ink-primary);
   background: var(--color-bg-main);

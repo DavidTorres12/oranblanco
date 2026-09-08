@@ -1,17 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import projects from './projectsData'
 import './Projects.css'
 
-function Services({ items, compact = false }) {
+function ProjectTags({ items }) {
   return (
-    <div className={compact ? 'project-card__tags' : 'project__services'}>
-      {items.map((service, index) => (
-        <span key={service}>
-          {service}
-          {!compact && index < items.length - 1 && (
-            <i aria-hidden="true">•</i>
-          )}
-        </span>
+    <div className="project-card__tags">
+      {items.map((service) => (
+        <span key={service}>{service}</span>
       ))}
     </div>
   )
@@ -21,13 +16,18 @@ function MobileProject({ project }) {
   return (
     <article className="project-mobile">
       <div className="project-mobile__media">
-        <img src={project.image} alt={project.imageAlt} loading="lazy" />
+        <img
+          src={project.image}
+          alt={project.imageAlt}
+          loading="lazy"
+          decoding="async"
+        />
       </div>
 
       <div className="project-mobile__info">
         <h3 className="project-mobile__name">{project.name}</h3>
         <p className="project-mobile__description">{project.description}</p>
-        <Services items={project.services} compact />
+        <ProjectTags items={project.services} />
 
         <div className="project-mobile__meta">
           {project.category && (
@@ -48,7 +48,7 @@ function MobileProject({ project }) {
           className="project__link"
           href={project.href}
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
         >
           Ver proyecto <span aria-hidden="true">↗</span>
         </a>
@@ -58,18 +58,41 @@ function MobileProject({ project }) {
 }
 
 function Projects() {
+  const sectionRef = useRef(null)
+  const [inView, setInView] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
   const activeProject = projects[activeIndex]
 
+  useEffect(() => {
+    const node = sectionRef.current
+    if (!node || typeof IntersectionObserver === 'undefined') {
+      setInView(true)
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -5% 0px' },
+    )
+
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section
+      ref={sectionRef}
       id="proyectos"
-      className="projects"
+      className={`projects${inView ? ' projects--visible' : ''}`}
       aria-labelledby="projects-title"
     >
       <div className="projects__inner">
         <header className="projects__header">
-
           <h2 id="projects-title" className="projects__title">
             PROYECTOS DESTACADOS<span>.</span>
           </h2>
@@ -96,7 +119,12 @@ function Projects() {
 
           <div className="project-stage" aria-live="polite">
             <div className="project-stage__content" key={activeProject.number}>
-              <img src={activeProject.image} alt={activeProject.imageAlt} />
+              <img
+                src={activeProject.image}
+                alt={activeProject.imageAlt}
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
 
@@ -114,7 +142,7 @@ function Projects() {
               <p className="project-card__category">{activeProject.category}</p>
             )}
 
-            <Services items={activeProject.services} compact />
+            <ProjectTags items={activeProject.services} />
 
             <div className="project-card__meta">
               <span>Proyecto</span>
@@ -127,7 +155,7 @@ function Projects() {
               className="project-card__link"
               href={activeProject.href}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               Ver proyecto <span aria-hidden="true">↗</span>
             </a>

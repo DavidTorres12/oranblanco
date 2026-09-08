@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { getWhatsAppUrl } from '../../config/contact'
 import './FAQ.css'
 
@@ -38,15 +38,43 @@ const faqs = [
 ]
 
 function FAQ() {
+  const sectionRef = useRef(null)
+  const [inView, setInView] = useState(false)
   // La primera pregunta (01) aparece abierta inicialmente
   const [openIndex, setOpenIndex] = useState(0)
+
+  useEffect(() => {
+    const node = sectionRef.current
+    if (!node || typeof IntersectionObserver === 'undefined') {
+      setInView(true)
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -5% 0px' },
+    )
+
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
 
   const toggleFAQ = (index) => {
     setOpenIndex((prevIndex) => (prevIndex === index ? null : index))
   }
 
   return (
-    <section id="faq" className="faq" aria-labelledby="faq-title">
+    <section
+      ref={sectionRef}
+      id="faq"
+      className={`faq${inView ? ' faq--visible' : ''}`}
+      aria-labelledby="faq-title"
+    >
       <div className="faq__inner">
         {/* Columna Izquierda */}
         <div className="faq__sidebar">
@@ -55,7 +83,9 @@ function FAQ() {
           <h2 id="faq-title" className="faq__title">
             Antes de empezar, <br />
             despejemos <br />
-            <span className="faq__title-highlight">algunas dudas.</span>
+            <span className="faq__title-highlight">
+              algunas dudas<span className="faq__dot">.</span>
+            </span>
           </h2>
 
           <p className="faq__description">

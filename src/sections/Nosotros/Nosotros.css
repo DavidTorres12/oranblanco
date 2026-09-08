@@ -2,14 +2,15 @@
   position: relative;
   background: var(--color-bg-main);
   color: var(--color-ink-primary);
-  padding: clamp(5.5rem, 12vh, 9.5rem) 0;
+  min-height: clamp(38rem, 80svh, 52rem);
+  padding: var(--section-padding-y) 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* 2. Luz ambiental sutil (Aura Cyan en el fondo) */
+/* Luz ambiental sutil (Aura Cyan en el fondo) */
 .nosotros__aura {
   position: absolute;
   top: 50%;
@@ -34,17 +35,21 @@
 /* 1. Etiqueta general centrada */
 .nosotros__header {
   text-align: center;
-  margin-bottom: clamp(2.5rem, 5vh, 4rem);
+  margin-bottom: var(--space-header-to-content);
   opacity: 0;
-  transform: translateY(1rem);
+  transform: translateY(18px);
+  filter: blur(5px);
   transition:
-    opacity 700ms ease,
-    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 800ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 800ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 60ms;
 }
 
 .nosotros--visible .nosotros__header {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
 }
 
 .nosotros__eyebrow {
@@ -68,18 +73,33 @@
   flex-direction: column;
   min-width: 0;
   justify-content: center;
+  transition:
+    opacity 450ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Opción 2: Enfoque editorial cruzado (Focus / Dim) */
+@media (hover: hover) and (min-width: 54rem) {
+  .nosotros__grid:has(.nosotros__column:hover) .nosotros__column:not(:hover) {
+    opacity: 0.42;
+  }
+
+  .nosotros__grid:has(.nosotros__column:hover) .nosotros__column:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
 }
 
 .nosotros__title {
-  font-family: 'Instrument Sans', sans-serif;
   font-size: clamp(2.35rem, 3.8vw + 0.5rem, 4.4rem);
   font-weight: 500;
   line-height: 1.05;
   letter-spacing: -0.04em;
+  text-wrap: balance;
   margin: 0;
 }
 
-/* 4. Micro-interacción al pasar el cursor (Hover con vida) */
+/* Micro-interacción al pasar el cursor */
 .nosotros__title--left {
   color: var(--color-ink-muted);
   transition: color 350ms ease;
@@ -94,21 +114,29 @@
 }
 
 .nosotros__dot {
-  color: var(--color-cyan);
+  color: var(--color-cyan-vibrant);
+  display: inline-block;
+  text-shadow: 0 0 12px rgba(14, 165, 233, 0.35);
 }
 
+/* Opción 3: Gradiente de marca vivo en 'tienen sentido.' */
 .nosotros__highlight {
+  display: inline-block;
+  background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 45%, #28c7e5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: var(--color-cyan);
-  display: inline;
-  transition: text-shadow 350ms ease;
+  filter: drop-shadow(0 0 16px rgba(14, 165, 233, 0.28));
+  transition: filter 350ms ease;
 }
 
 .nosotros__column--right:hover .nosotros__highlight {
-  text-shadow: 0 0 28px rgba(2, 132, 199, 0.32);
+  filter: drop-shadow(0 0 24px rgba(14, 165, 233, 0.55));
 }
 
 .nosotros__text {
-  margin: clamp(1.25rem, 2.5vh, 2rem) 0 0;
+  margin: var(--space-title-to-text) 0 0;
   color: var(--color-ink-secondary);
   font-size: clamp(0.95rem, 0.25vw + 0.85rem, 1.15rem);
   font-weight: 400;
@@ -116,7 +144,7 @@
   max-width: 36ch;
 }
 
-/* 3. Detalle de alta ingeniería en la línea divisoria (Micro-nodo y pulso) */
+/* Detalle de alta ingeniería en la línea divisoria */
 .nosotros__divider {
   position: relative;
   width: 100%;
@@ -131,6 +159,52 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition:
+    opacity 750ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 750ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 260ms;
+}
+
+.nosotros--visible .nosotros__divider {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* Opción 1: Haz de señal viajera en el divisor (Data Flow - Mobile horizontal) */
+.nosotros__divider::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: clamp(2.5rem, 15vw, 4.5rem);
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, var(--color-cyan-vibrant), #ffffff, var(--color-cyan-glow), transparent);
+  box-shadow: 0 0 12px rgba(14, 165, 233, 0.75);
+  opacity: 0;
+  animation: nosotros-flow-h 7.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes nosotros-flow-h {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.95;
+  }
+  45% {
+    left: calc(100% - clamp(2.5rem, 15vw, 4.5rem));
+    opacity: 0;
+  }
+  100% {
+    left: calc(100% - clamp(2.5rem, 15vw, 4.5rem));
+    opacity: 0;
+  }
 }
 
 .nosotros__node {
@@ -156,20 +230,59 @@
   }
 }
 
-/* 5. Cierre o Principio de Marca al pie */
+/* Animaciones secuenciales sutiles al entrar en pantalla */
+.nosotros__column--left {
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(6px);
+  transition:
+    opacity 850ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 850ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 850ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 150ms;
+}
+
+.nosotros--visible .nosotros__column--left {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.nosotros__column--right {
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(6px);
+  transition:
+    opacity 850ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 850ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 850ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 360ms;
+}
+
+.nosotros--visible .nosotros__column--right {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Cierre o Principio de Marca al pie */
 .nosotros__footer {
   margin-top: clamp(3rem, 6vh, 4.75rem);
   text-align: center;
   opacity: 0;
-  transform: translateY(1.25rem);
+  transform: translateY(16px);
+  filter: blur(4px);
   transition:
-    opacity 800ms 700ms ease,
-    transform 800ms 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 850ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 850ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 850ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 500ms;
 }
 
 .nosotros--visible .nosotros__footer {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
 }
 
 .nosotros__principle {
@@ -179,47 +292,6 @@
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-/* Animaciones secuenciales sutiles al entrar en pantalla */
-.nosotros__column--left {
-  opacity: 0;
-  transform: translateY(1.5rem);
-  transition:
-    opacity 800ms 150ms ease,
-    transform 800ms 150ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.nosotros__divider {
-  opacity: 0;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition:
-    opacity 700ms 350ms ease,
-    transform 700ms 350ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.nosotros__column--right {
-  opacity: 0;
-  transform: translateY(1.5rem);
-  transition:
-    opacity 800ms 550ms ease,
-    transform 800ms 550ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.nosotros--visible .nosotros__column--left {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.nosotros--visible .nosotros__divider {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
-.nosotros--visible .nosotros__column--right {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* Diseño de dos columnas en escritorio bien centrado */
@@ -251,6 +323,35 @@
   .nosotros--visible .nosotros__divider {
     transform: scaleY(1);
   }
+
+  /* Opción 1: Haz de señal vertical en escritorio */
+  .nosotros__divider::after {
+    top: 0;
+    left: -1px;
+    width: 3px;
+    height: clamp(3rem, 9vh, 5.5rem);
+    background: linear-gradient(180deg, transparent, var(--color-cyan-vibrant), #ffffff, var(--color-cyan-glow), transparent);
+    box-shadow: 0 0 14px rgba(14, 165, 233, 0.85);
+    animation: nosotros-flow-v 7.5s ease-in-out infinite;
+  }
+
+  @keyframes nosotros-flow-v {
+    0% {
+      top: 0;
+      opacity: 0;
+    }
+    15% {
+      opacity: 0.95;
+    }
+    45% {
+      top: calc(100% - clamp(3rem, 9vh, 5.5rem));
+      opacity: 0;
+    }
+    100% {
+      top: calc(100% - clamp(3rem, 9vh, 5.5rem));
+      opacity: 0;
+    }
+  }
 }
 
 /* Accesibilidad: Reducción de movimiento */
@@ -258,14 +359,17 @@
   .nosotros__header,
   .nosotros__column--left,
   .nosotros__divider,
+  .nosotros__divider::after,
   .nosotros__column--right,
   .nosotros__footer {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
     transition: none !important;
   }
 
-  .nosotros__node {
+  .nosotros__node,
+  .nosotros__divider::after {
     animation: none !important;
   }
 

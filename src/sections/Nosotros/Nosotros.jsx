@@ -7,7 +7,10 @@ function Nosotros() {
 
   useEffect(() => {
     const node = sectionRef.current
-    if (!node) return undefined
+    if (!node || typeof IntersectionObserver === 'undefined') {
+      setInView(true)
+      return undefined
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -16,7 +19,7 @@ function Nosotros() {
           observer.disconnect()
         }
       },
-      { threshold: 0.2 },
+      { threshold: 0.12, rootMargin: '0px 0px -5% 0px' },
     )
 
     observer.observe(node)

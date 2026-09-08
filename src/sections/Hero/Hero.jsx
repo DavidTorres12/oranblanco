@@ -2,9 +2,11 @@ import { useEffect, useRef, useState } from 'react'
 import './Hero.css'
 
 const links = [
-  ['Proyectos', '#proyectos'],
-  ['Soluciones', '#soluciones'],
+  ['Testimonios', '#testimonios'],
   ['Nosotros', '#nosotros'],
+  ['Proyectos', '#proyectos'],
+  ['Enfoque', '#enfoque'],
+  ['Preguntas', '#faq'],
 ]
 
 function ProjectCta({ placement }) {
@@ -132,7 +134,6 @@ function Hero() {
 
         <div className="hero__actions">
           <a className="hero__contact" href="#contacto">
-
             Hablemos <span aria-hidden="true">↗</span>
           </a>
 
@@ -184,9 +185,9 @@ function Hero() {
       <div className="hero__layout">
         <div className="hero__copy">
           <h1 id="hero-title" className="hero__title">
-            <span>Tecnología</span>
-            <span>que entiende</span>
-            <span>
+            <span className="hero__title-line">Tecnología</span>
+            <span className="hero__title-line">que entiende</span>
+            <span className="hero__title-line hero__title-line--accent">
               tu negocio<span className="hero__title-dot">.</span>
             </span>
           </h1>
@@ -201,6 +202,10 @@ function Hero() {
             className="hero__poster"
             src="/galeria/fondohero.webp"
             alt=""
+            fetchPriority="high"
+            decoding="async"
+            width="640"
+            height="640"
           />
 
           {!reduceMotion && videoAvailable && (

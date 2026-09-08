@@ -8,7 +8,7 @@ function Enfoque() {
   useEffect(() => {
     const section = sectionRef.current
 
-    if (!section || !('IntersectionObserver' in window)) {
+    if (!section || typeof IntersectionObserver === 'undefined') {
       setIsVisible(true)
       return undefined
     }
@@ -21,8 +21,8 @@ function Enfoque() {
         observer.disconnect()
       },
       {
-        threshold: 0.28,
-        rootMargin: '0px 0px -8% 0px',
+        threshold: 0.12,
+        rootMargin: '0px 0px -4% 0px',
       },
     )
 
@@ -50,8 +50,7 @@ function Enfoque() {
           aria-label="¿Qué necesita realmente tu empresa para crecer?"
         >
           <span className="enfoque__question-line" aria-hidden="true">
-            ¿Qué necesita realmente <span className="enfoque__accent">tu</span>{' '}
-            <span className="enfoque__accent">empresa</span> para
+            ¿Qué necesita realmente <span className="enfoque__accent">tu empresa</span> para
           </span>
           <span className="enfoque__question-line" aria-hidden="true">
             <span className="enfoque__highlight">crecer?</span>
