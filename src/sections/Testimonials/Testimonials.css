@@ -211,6 +211,7 @@
   right: clamp(1.15rem, 3.5vw, 1.65rem);
   bottom: clamp(1.15rem, 3.5vw, 1.65rem);
   left: clamp(1.15rem, 3.5vw, 1.65rem);
+  pointer-events: none;
   transition: opacity 280ms ease, transform 280ms ease;
 }
 

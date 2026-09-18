@@ -1,8 +1,26 @@
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import './ScrollToTop.css'
 
 function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false)
+  const { pathname, hash } = useLocation()
+
+  // Retorno al inicio o desplazamiento hacia el ancla hash al cambiar de ruta
+  useEffect(() => {
+    if (!hash) {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    } else {
+      const targetId = hash.replace('#', '')
+      const targetEl = document.getElementById(targetId)
+      if (targetEl) {
+        // Permitir un microtick para asegurar que el DOM esté listo
+        setTimeout(() => {
+          targetEl.scrollIntoView({ behavior: 'smooth' })
+        }, 50)
+      }
+    }
+  }, [pathname, hash])
 
   useEffect(() => {
     const handleScroll = () => {

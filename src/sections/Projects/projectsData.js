@@ -21,6 +21,17 @@ const projects = [
   },
   {
     number: '03',
+    name: 'Lic. Luciana Guaimas',
+    category: 'Landing page y campaña publicitaria',
+    services: ['Landing page', 'Campaña publicitaria', 'Trabajo social'],
+    description:
+      'Creamos una landing page y una campaña publicitaria para ayudarla a dar a conocer su servicio de informes socioambientales y generar nuevas consultas.',
+    href: 'https://lucianaguaimas.online',
+    image: '/galeria/lic.luciana.png',
+    imageAlt: 'Mockup de la landing page de Lic. Luciana Guaimas',
+  },
+  {
+    number: '04',
     name: 'MP Studio',
     services: ['Portfolio web', 'Fotografía', 'Video'],
     description:
@@ -30,7 +41,7 @@ const projects = [
     imageAlt: 'Mockup del sitio web de MP Studio',
   },
   {
-    number: '04',
+    number: '05',
     name: 'Orán Hoy',
     category: 'Iniciativa propia',
     services: ['Plataforma digital', 'Directorio local', 'Comunidad'],

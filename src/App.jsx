@@ -1,25 +1,27 @@
-import Footer from './components/Footer/Footer'
+import { lazy, Suspense } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
-import Enfoque from './sections/Enfoque/Enfoque'
-import FAQ from './sections/FAQ/FAQ'
-import Hero from './sections/Hero/Hero'
-import Nosotros from './sections/Nosotros/Nosotros'
-import Projects from './sections/Projects/Projects'
-import Testimonials from './sections/Testimonials/Testimonials'
+import AgencyPage from './pages/AgencyPage/AgencyPage'
+
+const CartelesPage = lazy(() => import('./pages/CartelesPage/CartelesPage'))
 
 function App() {
   return (
     <>
-      <main>
-        <Hero />
-        <Testimonials />
-        <Nosotros />
-        <Projects />
-        <Enfoque />
-        <FAQ />
-      </main>
-      <Footer />
       <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<AgencyPage />} />
+        <Route
+          path="/carteles-inteligentes"
+          element={
+            <Suspense fallback={null}>
+              <CartelesPage />
+            </Suspense>
+          }
+        />
+        {/* Redirección ante rutas no encontradas para evitar pantallas en blanco */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </>
   )
 }

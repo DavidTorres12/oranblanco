@@ -47,8 +47,9 @@ function MobileProject({ project }) {
         <a
           className="project__link"
           href={project.href}
-          target="_blank"
-          rel="noopener noreferrer"
+          target={project.href && project.href !== '#' ? '_blank' : undefined}
+          rel={project.href && project.href !== '#' ? 'noopener noreferrer' : undefined}
+          onClick={project.href === '#' ? (e) => e.preventDefault() : undefined}
         >
           Ver proyecto <span aria-hidden="true">↗</span>
         </a>
@@ -154,8 +155,9 @@ function Projects() {
             <a
               className="project-card__link"
               href={activeProject.href}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={activeProject.href && activeProject.href !== '#' ? '_blank' : undefined}
+              rel={activeProject.href && activeProject.href !== '#' ? 'noopener noreferrer' : undefined}
+              onClick={activeProject.href === '#' ? (e) => e.preventDefault() : undefined}
             >
               Ver proyecto <span aria-hidden="true">↗</span>
             </a>

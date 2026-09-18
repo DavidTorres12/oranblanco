@@ -71,10 +71,11 @@ function FAQ() {
   return (
     <section
       ref={sectionRef}
-      id="faq"
+      id="preguntas"
       className={`faq${inView ? ' faq--visible' : ''}`}
       aria-labelledby="faq-title"
     >
+      <span id="faq" className="faq__anchor" aria-hidden="true" />
       <div className="faq__inner">
         {/* Columna Izquierda */}
         <div className="faq__sidebar">

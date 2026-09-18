@@ -5,6 +5,7 @@
 ## Resumen de la Empresa
 - **Nombre:** Orán Soluciones
 - **Sitio web oficial:** https://oransoluciones.com
+- **WhatsApp oficial:** +54 3878-547328
 - **Ubicación principal:** San Ramón de la Nueva Orán, Salta, Argentina (CP 4530)
 - **Área de influencia:** San Ramón de la Nueva Orán, Hipólito Yrigoyen, Pichanal, Embarcación, Tartagal, Provincia de Salta y Noroeste Argentino (NOA). También desarrollamos proyectos remotos para toda Argentina.
 - **Lema y filosofía:** *"No vendemos tecnología porque sí. Construimos soluciones que tienen sentido. Escuchamos primero, desarrollamos después."*

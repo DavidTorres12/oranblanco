@@ -15,6 +15,13 @@ function PlayIcon() {
 function TestimonialCard({ testimonial, position, index, onSelect }) {
   const { name, videoSrc, videoType, posterSrc } = testimonial
   const [isPlaying, setIsPlaying] = useState(false)
+  const videoRef = useRef(null)
+
+  useEffect(() => {
+    if (position !== 'active' && videoRef.current && !videoRef.current.paused) {
+      videoRef.current.pause()
+    }
+  }, [position])
 
   return (
     <article
@@ -24,16 +31,17 @@ function TestimonialCard({ testimonial, position, index, onSelect }) {
     >
       {videoSrc ? (
         <video
+          ref={videoRef}
           className="testimonial-card__video"
           controls
           playsInline
           preload="metadata"
-          poster={posterSrc ?? undefined}
+          poster={posterSrc || undefined}
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
           onEnded={() => setIsPlaying(false)}
         >
-          <source src={videoSrc} type={videoType} />
+          <source src={`${videoSrc}#t=0.001`} type={videoType} />
         </video>
       ) : (
         <div className="testimonial-card__placeholder">
@@ -65,11 +73,7 @@ function Testimonials() {
   const sectionRef = useRef(null)
   const trackRef = useRef(null)
   const [inView, setInView] = useState(false)
-  const [activeIndex, setActiveIndex] = useState(() =>
-    typeof window !== 'undefined' && window.matchMedia('(min-width: 48rem)').matches
-      ? 1
-      : 0,
-  )
+  const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
     const node = sectionRef.current

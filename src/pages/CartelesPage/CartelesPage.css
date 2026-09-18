@@ -1,0 +1,26 @@
+.carteles-page {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-main);
+  color: var(--color-ink-primary);
+
+  /* Sistema de espaciado vertical uniforme para secciones de Carteles Inteligentes:
+     - Móvil (390px): ~48-50px (rango: 48-64px)
+     - Tablet (768px): ~65-72px (rango: 64-80px)
+     - Escritorio (1366-1920px): ~88-96px (rango: 80-110px) */
+  --carteles-section-py: clamp(3.125rem, 2.15rem + 4vw, 6rem);
+
+  /* Sección Beneficios (compacta):
+     - Móvil: 40px | Tablet: ~45px | Escritorio: ~54-56px (rango: 40-56px) */
+  --carteles-section-py-compact: clamp(2.5rem, 2.15rem + 1.4vw, 3.5rem);
+}
+
+.carteles-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

@@ -1,19 +1,19 @@
 const testimonials = [
   {
     name: 'Tierra De Nadie',
-    videoSrc: '/galeria/tdn.mp4',
+    videoSrc: '/galeria/testimonios/Tierradenadie.mp4',
     videoType: 'video/mp4',
-    posterSrc: '/galeria/tdn.webp',
+    posterSrc: null,
   },
   {
     name: 'Mecatrónica Tec Orán',
-    videoSrc: null,
+    videoSrc: '/galeria/testimonios/Mecatronica.mp4',
     videoType: 'video/mp4',
     posterSrc: null,
   },
   {
     name: 'MP Studio',
-    videoSrc: null,
+    videoSrc: '/galeria/testimonios/Mp-studio.mp4',
     videoType: 'video/mp4',
     posterSrc: null,
   },

@@ -20,17 +20,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(0.75rem, 2.5vw, 2.75rem);
+  gap: clamp(0.75rem, 1.8vw, 1.75rem);
   flex-wrap: nowrap;
   text-align: center;
 }
 
 .footer__brand-title {
   margin: 0;
-  font-size: clamp(2rem, 7.8vw, 7.5rem);
+  font-size: clamp(1.85rem, 3.8vw, 3.75rem);
   font-weight: 700;
   line-height: 1.05;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.035em;
   text-transform: uppercase;
   color: #ffffff;
   white-space: nowrap;
@@ -54,11 +54,11 @@
 }
 
 .footer__brand-symbol {
-  width: clamp(2.75rem, 7.8vw, 8.25rem);
-  height: clamp(2.75rem, 7.8vw, 8.25rem);
+  width: clamp(2.25rem, 4vw, 4.25rem);
+  height: clamp(2.25rem, 4vw, 4.25rem);
   color: #38bdf8;
   flex-shrink: 0;
-  filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.35));
+  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.35));
   transition:
     transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
     filter 400ms ease;
@@ -81,7 +81,7 @@
     rgba(255, 255, 255, 0.1) 85%,
     transparent 100%
   );
-  margin: clamp(2.5rem, 5vh, 5rem) 0 clamp(1.75rem, 3.5vh, 2.75rem);
+  margin: clamp(1.75rem, 3.5vh, 2.75rem) 0 clamp(1.5rem, 2.8vh, 2.25rem);
 }
 
 /* Fila de navegación y redes */
@@ -214,13 +214,6 @@
   border-color: rgba(96, 165, 250, 0.5);
   background: rgba(96, 165, 250, 0.1);
   box-shadow: 0 6px 20px rgba(96, 165, 250, 0.28);
-}
-
-.footer__social-btn--linkedin:hover {
-  color: #38bdf8;
-  border-color: rgba(56, 189, 248, 0.5);
-  background: rgba(56, 189, 248, 0.1);
-  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.28);
 }
 
 /* Fila final de información */

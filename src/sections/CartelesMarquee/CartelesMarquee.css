@@ -1,0 +1,199 @@
+/* ==========================================================================
+   SECCIÓN: CARTELES MARQUEE (Rubros / Negocios)
+   Integración armónica con la identidad visual: fondo marfil, azul marino y celeste
+   ========================================================================== */
+
+.carteles-marquee {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  overflow: hidden;
+  background-color: var(--color-bg-main, #f8fafc);
+  background-image:
+    radial-gradient(
+      ellipse 65% 60% at 50% 50%,
+      rgba(14, 165, 233, 0.09) 0%,
+      rgba(2, 132, 199, 0.03) 45%,
+      transparent 75%
+    );
+  padding-block: clamp(3.5rem, 6vw, 5rem);
+  color: var(--color-ink-primary, #0f172a);
+  box-sizing: border-box;
+}
+
+.carteles-marquee__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 3.5vw, 3rem);
+}
+
+/* Encabezado */
+.carteles-marquee__header {
+  width: 100%;
+  max-width: 50rem;
+  margin-inline: auto;
+  padding-inline: var(--container-gutter, 1.25rem);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.carteles-marquee__title {
+  margin: 0;
+  font-family: var(--font-primary, 'Instrument Sans', sans-serif);
+  font-size: clamp(1.4rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: -0.025em;
+  color: var(--color-ink-primary, #0f172a);
+  text-wrap: balance;
+}
+
+.carteles-marquee__title-accent {
+  color: var(--color-cyan, #0284c7);
+  display: inline;
+}
+
+/* Contenedor de las dos filas animadas */
+.carteles-marquee__content {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vw, 1.6rem);
+  overflow: hidden;
+}
+
+/* Fila individual del Marquee con máscara degradada lateral */
+.carteles-marquee__row {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  user-select: none;
+  cursor: default;
+  /* Máscara suave para desvanecer entrada y salida hacia los bordes */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 8%,
+    rgba(0, 0, 0, 1) 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 8%,
+    rgba(0, 0, 0, 1) 92%,
+    transparent 100%
+  );
+}
+
+.carteles-marquee__row:focus-visible {
+  outline: 2px solid var(--color-cyan, #0284c7);
+  outline-offset: -2px;
+}
+
+/* Pista continua con hardware acceleration */
+.carteles-marquee__track {
+  display: flex;
+  width: max-content;
+  flex-shrink: 0;
+  will-change: transform;
+}
+
+/* Animación hacia la izquierda */
+.carteles-marquee__track--left {
+  animation: marqueeScrollLeft 38s linear infinite;
+}
+
+/* Animación hacia la derecha (sentido opuesto) */
+.carteles-marquee__track--right {
+  animation: marqueeScrollRight 34s linear infinite;
+}
+
+/* Pausar al pasar el cursor o hacer focus */
+.carteles-marquee__row:hover .carteles-marquee__track,
+.carteles-marquee__row:focus-within .carteles-marquee__track {
+  animation-play-state: paused;
+}
+
+/* Grupos de elementos */
+.carteles-marquee__group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.carteles-marquee__item-wrap {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Texto de cada rubro en azul oscuro con sutileza editorial */
+.carteles-marquee__item {
+  font-family: var(--font-primary, 'Instrument Sans', sans-serif);
+  font-size: clamp(1.35rem, 3.2vw, 2.4rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-ink-primary, #0f172a);
+  white-space: nowrap;
+  transition: color 200ms ease, transform 200ms ease;
+  padding-block: 0.25rem;
+}
+
+.carteles-marquee__row:hover .carteles-marquee__item:hover {
+  color: var(--color-cyan, #0284c7);
+}
+
+/* Separadores discretos en celeste */
+.carteles-marquee__separator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-cyan, #0284c7);
+  font-size: clamp(1.2rem, 3vw, 2.2rem);
+  padding-inline: clamp(1.1rem, 2.8vw, 2.2rem);
+  line-height: 1;
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   Keyframes infinitos continuos y fluidos
+   ========================================================================== */
+
+@keyframes marqueeScrollLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marqueeScrollRight {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* ==========================================================================
+   Accesibilidad: prefers-reduced-motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .carteles-marquee__track--left,
+  .carteles-marquee__track--right {
+    animation: none;
+  }
+
+  .carteles-marquee__row {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+    scrollbar-width: thin;
+  }
+}

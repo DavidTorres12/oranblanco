@@ -1,0 +1,440 @@
+/* ==========================================================================
+   Sección Combos de Lanzamiento (/carteles-inteligentes#combos)
+   ========================================================================== */
+
+.carteles-combos {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  scroll-margin-top: clamp(4.5rem, 8vh, 6rem);
+  padding-top: var(--carteles-section-py, clamp(3.125rem, 2.15rem + 4vw, 6rem));
+  padding-bottom: var(--carteles-section-py, clamp(3.125rem, 2.15rem + 4vw, 6rem));
+  background: var(--color-bg-main, #f8fafc);
+  color: var(--color-ink-primary);
+  border-top: 1px solid var(--color-border-subtle);
+  overflow: hidden;
+
+  /* Animación suave de entrada */
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 650ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.carteles-combos--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.carteles-combos__card {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 650ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 650ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+  will-change: opacity, transform;
+}
+
+.carteles-combos--visible .carteles-combos__card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.carteles-combos--visible .carteles-combos__card:nth-child(1) {
+  transition-delay: 100ms;
+}
+
+.carteles-combos--visible .carteles-combos__card:nth-child(2) {
+  transition-delay: 220ms;
+}
+
+.carteles-combos__inner {
+  width: min(100%, clamp(78rem, 90vw, 1440px));
+  margin-inline: auto;
+  padding-inline: var(--container-gutter);
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+   Encabezado
+   -------------------------------------------------------------------------- */
+.carteles-combos__header {
+  text-align: center;
+  margin-bottom: clamp(1.25rem, 2.8vh, 2.5rem);
+}
+
+.carteles-combos__eyebrow {
+  display: inline-block;
+  font-size: clamp(0.7rem, 1.5vw, 0.78rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: clamp(0.4rem, 0.8vh, 0.75rem);
+}
+
+.carteles-combos__title {
+  margin: 0 0 clamp(0.35rem, 0.8vh, 0.65rem) 0;
+  font-size: clamp(1.85rem, 3.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: var(--color-ink-primary);
+}
+
+.carteles-combos__title-highlight {
+  color: var(--color-cyan, #0284c7);
+}
+
+.carteles-combos__subtitle {
+  margin: 0 auto;
+  font-size: clamp(0.92rem, 1.4vw, 1.1rem);
+  line-height: 1.45;
+  color: #475569;
+  max-width: 32rem;
+}
+
+/* --------------------------------------------------------------------------
+   Grilla Mobile-First de Combos
+   -------------------------------------------------------------------------- */
+.carteles-combos__grid {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.15rem, 2vw, 1.75rem);
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Tarjetas de Combo Ultra-Minimalistas
+   -------------------------------------------------------------------------- */
+.carteles-combos__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: clamp(1.15rem, 1.8vw, 1.45rem);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  padding: clamp(1rem, 1.8vw, 1.45rem);
+  box-shadow:
+    0 4px 20px -4px rgba(15, 23, 42, 0.06),
+    0 1px 3px rgba(15, 23, 42, 0.04);
+  transition:
+    transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 280ms ease;
+}
+
+/* Tarjeta destacada x3 */
+.carteles-combos__card--x3 {
+  border: 1.5px solid var(--color-cyan, #0284c7);
+  box-shadow:
+    0 8px 30px -6px rgba(2, 132, 199, 0.16),
+    0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .carteles-combos__card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 14px 32px -8px rgba(15, 23, 42, 0.1),
+      0 4px 10px -2px rgba(15, 23, 42, 0.04);
+  }
+
+  .carteles-combos__card--x3:hover {
+    box-shadow:
+      0 16px 36px -8px rgba(2, 132, 199, 0.24),
+      0 4px 10px -2px rgba(15, 23, 42, 0.05);
+  }
+
+  .carteles-combos__card:hover .carteles-combos__media-img {
+    transform: scale(1.025);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Área Visual de la Imagen (Limpia y Contenida)
+   -------------------------------------------------------------------------- */
+.carteles-combos__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: clamp(150px, 22vh, 260px);
+  background: #f8fafc;
+  border-radius: clamp(0.75rem, 1.2vw, 1rem);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carteles-combos__media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  border-radius: inherit;
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Cuerpo de la Tarjeta (Espaciado, Directo y Simple)
+   -------------------------------------------------------------------------- */
+.carteles-combos__body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.65rem, 1.4vh, 1rem);
+  padding-top: clamp(0.95rem, 1.8vh, 1.25rem);
+}
+
+/* Fila de Título + Badge */
+.carteles-combos__card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.carteles-combos__card-title {
+  margin: 0;
+  font-size: clamp(1.35rem, 1.9vw, 1.7rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-ink-primary);
+}
+
+.carteles-combos__savings-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--color-cyan, #0284c7);
+  background: var(--color-cyan-light, #e0f2fe);
+  border: 1px solid rgba(2, 132, 199, 0.2);
+  padding: 0.24rem 0.65rem;
+  border-radius: 999px;
+}
+
+.carteles-combos__badge-featured {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-cyan, #0284c7);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
+}
+
+/* Fila de Precios */
+.carteles-combos__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.carteles-combos__price-main {
+  font-size: clamp(1.85rem, 2.6vw, 2.35rem);
+  font-weight: 700;
+  color: var(--color-ink-primary);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.carteles-combos__price-currency {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.carteles-combos__price-prev {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #94a3b8;
+  text-decoration: line-through;
+  margin-left: 0.2rem;
+}
+
+.carteles-combos__savings-text {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-cyan, #0284c7);
+  margin-left: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Botón CTA hacia WhatsApp
+   -------------------------------------------------------------------------- */
+.carteles-combos__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  width: 100%;
+  min-height: clamp(2.65rem, 4.5vh, 2.95rem);
+  padding: 0.65rem 1.15rem;
+  border-radius: 9px;
+  background: var(--color-navy-deep, #0f172a);
+  color: #ffffff;
+  font-size: clamp(0.9rem, 1.1vw, 0.96rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.16);
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+  margin-top: 0.25rem;
+}
+
+.carteles-combos__btn:hover {
+  background: #1e293b;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.24);
+  transform: translateY(-1.5px);
+}
+
+.carteles-combos__btn:focus-visible {
+  outline: 2px solid var(--color-cyan, #0284c7);
+  outline-offset: 3px;
+}
+
+.carteles-combos__btn:active {
+  transform: scale(0.985);
+  background: #090e17;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+}
+
+.carteles-combos__btn-whatsapp-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: 0 0 auto;
+  color: #25D366;
+}
+
+.carteles-combos__btn-arrow {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: 0 0 auto;
+  transition: transform 180ms ease;
+}
+
+.carteles-combos__btn:hover .carteles-combos__btn-arrow {
+  transform: translateX(3px);
+}
+
+/* --------------------------------------------------------------------------
+   Nota explicativa inferior
+   -------------------------------------------------------------------------- */
+.carteles-combos__footer-note {
+  text-align: center;
+  font-size: clamp(0.82rem, 1.2vw, 0.9rem);
+  line-height: 1.45;
+  color: #64748b;
+  margin-top: clamp(1.2rem, 2.2vh, 2rem);
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Escritorio (>= 56rem / 896px)
+   2 columnas balanceadas y centradas
+   -------------------------------------------------------------------------- */
+@media (min-width: 56rem) {
+  .carteles-combos__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: clamp(860px, 68vw, 1180px);
+    gap: clamp(1.25rem, 2.2vw, 2.25rem);
+  }
+
+  .carteles-combos__card {
+    padding: clamp(1rem, 1.8vw, 1.5rem);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Pantallas con poca altura (max-height: 800px)
+   -------------------------------------------------------------------------- */
+@media (max-height: 800px) and (min-width: 48rem) {
+  .carteles-combos__header {
+    margin-bottom: clamp(0.75rem, 1.8vh, 1.25rem);
+  }
+
+  .carteles-combos__title {
+    font-size: clamp(1.65rem, 2.5vw, 2.2rem);
+  }
+
+  .carteles-combos__subtitle {
+    font-size: 0.9rem;
+  }
+
+  .carteles-combos__media {
+    max-height: clamp(120px, 18vh, 160px);
+  }
+
+  .carteles-combos__card {
+    padding: clamp(0.75rem, 1.2vw, 1rem);
+  }
+
+  .carteles-combos__body {
+    padding-top: 0.6rem;
+  }
+
+  .carteles-combos__divider {
+    margin: 0.65rem 0;
+  }
+
+  .carteles-combos__pricing {
+    margin-bottom: 0.75rem;
+  }
+
+  .carteles-combos__price-main {
+    font-size: clamp(1.55rem, 2vw, 1.95rem);
+  }
+
+  .carteles-combos__btn {
+    min-height: 2.55rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.88rem;
+  }
+
+  .carteles-combos__footer-note {
+    margin-top: 0.85rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Accesibilidad: prefers-reduced-motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .carteles-combos,
+  .carteles-combos__card {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .carteles-combos__media-img,
+  .carteles-combos__btn,
+  .carteles-combos__btn-arrow {
+    transition: none !important;
+    transform: none !important;
+  }
+}
