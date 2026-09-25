@@ -63,6 +63,7 @@ function TestimonialCard({ testimonial, position, index, onSelect }) {
           type="button"
           onClick={onSelect}
           aria-label={`Mostrar testimonio de ${name}`}
+          tabIndex={position === 'hidden' ? -1 : 0}
         />
       )}
     </article>
@@ -114,9 +115,11 @@ function Testimonials() {
 
   const getPosition = (index) => {
     if (index === activeIndex) return 'active'
-    return (index - activeIndex + testimonials.length) % testimonials.length === 1
-      ? 'right'
-      : 'left'
+    const total = testimonials.length
+    const diff = (index - activeIndex + total) % total
+    if (diff === 1) return 'right'
+    if (diff === total - 1) return 'left'
+    return 'hidden'
   }
 
   const scrollRaf = useRef(null)

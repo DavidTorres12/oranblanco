@@ -6,6 +6,12 @@ const testimonials = [
     posterSrc: null,
   },
   {
+    name: 'Lic. Luciana',
+    videoSrc: '/galeria/testimonios/Lic.%20Luciana.mp4',
+    videoType: 'video/mp4',
+    posterSrc: null,
+  },
+  {
     name: 'Mecatrónica Tec Orán',
     videoSrc: '/galeria/testimonios/Mecatronica.mp4',
     videoType: 'video/mp4',
